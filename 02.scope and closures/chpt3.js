@@ -45,7 +45,61 @@ var a = 2
 (function IIFE(b){
 	console.log(b)
 })(a) // enter aruments pass here
+/*with and catch keywords create new block scopes
+- ES6 'let' keyword allows for block scoping in JS when creating vars
+let variables will not auto hoist - wont exist until explicitly created*/
+console.log(bar) // ReferenceError
+let bar = 2
+/* let implicitly attaches variable to existing block - better to explicitly do it*/
+// implicit example
+var foo = true
+if (foo){
+	let bar = foo * 2
+	bar = something(bar)
+	console.log(bar)
+}
+console.log(bar) // causes ReferenceError
+// explicit example
+var foo = true
+if (foo){
+	{ // explicit block - can move around without affecting if block
+		let bar = foo * 2
+		bar = something(bar)
+		console.log(bar)
+	}
+}
 
-/******blocks as scopes*************/
-/*
+/******garbage collection*****/
+function process(data) {}
+var someBigData = {}
+process(someBigData)
+var btn = document.getElementById( "my_button" )
+btn.addEventListener( "click", function click(evt){
+    console.log("button clicked")
+}, false)
+/*click function doesnt need someBigData var so it can be garbage
+	collected after use but most likely wont be since click function
+	has a closure over scope
+-block scope can fix this by explicitly showing varisnt needed anymore*/
+function process(data) {}
+{ // create block scope and use 'let' to create variable
+	let someBigData = {}
+	process(someBigData)
+}
+var btn = document.getElementById( "my_button" )
+btn.addEventListener( "click", function click(evt){
+    console.log("button clicked")
+}, false)
+/*let variables can also be used for loops - rebinds to each iteration of loop
+-let declaations attach to any block creations including if statement*/
+var foo = true, baz = 10
+if (foo) {
+    let bar = 3
+}
+if (baz > bar) { // wont see bar because 'let' is in if statement's block
+    console.log(baz)
+}
+/*ES6 also has 'const' declaration - also creates bock-scoped var but is fixed
+	-cant change value of a const variable
+
 
