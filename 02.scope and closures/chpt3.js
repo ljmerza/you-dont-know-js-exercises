@@ -37,6 +37,15 @@ var a = 2
 	console.log(a)
 })()
 console.log(a)
-/*
+/*anonymous functions have no identifier
+-dont have a name for stacktraces - harder to debug
+-cant recursively call without depreciated arguments.callee
+-good practide to always name functions so IIFE:*/
+var a = 2
+(function IIFE(b){
+	console.log(b)
+})(a) // enter aruments pass here
 
+/******blocks as scopes*************/
+/*
 
