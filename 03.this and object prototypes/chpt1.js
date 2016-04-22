@@ -119,6 +119,15 @@ foo() //undefined
 -cant use this context reference to look up in a lexical scope*/
 
 /*****what is this*****/
+/*this context is not an author time binding but a runtime binding
+-it is based on the conditions of the function's invocation
+-binding of conext has nothing to do with where function is called but how
+-when function is invoked, execution context is created that contains
+	info about where function was called in call stack, how function was called,
+	what parameters were passed, etc
+-one of the properties of this recording is the this reference
+-
+
 
 
 
